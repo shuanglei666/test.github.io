@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>one</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/minireset.css/0.0.2/minireset.min.css" rel="stylesheet">
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>  vue.js -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+  <!-- <link rel="stylesheet" href="./css/index.css"> -->
+</head>
+<style>
+  .max {
+    min-width: 100%;
+    min-height: 100%;
+    background: rgb(246, 247, 249);
+  }
+
+  .search {
+    width: 720px;
+    height: 250px;
+    display: flex;
+    /* background: pink; */
+    margin: 0 auto;
+    flex-direction: column;
+  }
+
+  .search_top {
+    margin: 40px auto;
+    flex-direction: row;
+    display: flex;
+  }
+
+  .search_top img {
+    width: 25px;
+  }
+
+  .search_top_span {
+    font-weight: 600;
+    font-size: 25px;
+    margin-left: 10px;
+  }
+
+  .search_btn {
+    margin: 5px auto;
+    width: 720px;
+    height: 50px;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background: #fff;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px rgb(187 193 198);
+  }
+
+  .search_img {
+    width: 25px;
+    position: relative;
+    right: 15px;
+  }
+
+  .search_ipt {
+    width: 85%;
+    height: 30px;
+    /* border: 1px solid aquamarine; */
+  }
+
+  .search_ipt input {
+    background: none;
+    outline: none;
+    border: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .search_enter {
+    box-sizing: border-box;
+    width: 30px;
+    background: rgb(246, 247, 249);
+    /* padding: 15px; */
+    border-radius: 25px;
+    position: relative;
+    left: 15px;
+  }
+
+  .search_enter img {
+    width: 25px;
+    cursor: pointer;
+  }
+
+  /* 书版 */
+  .book {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+  }
+
+  .book_box {
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 80px;
+    flex-direction: row;
+    margin: 0px auto;
+  }
+
+  /* 左边 */
+  .book_box_lft {
+    width: 49%;
+    flex-direction: column;
+    display: flex;
+  }
+
+  /* 飙升 */
+  .soar {
+    width: 100%;
+    /* border: 1px solid red; */
+    flex-direction: column;
+    display: flex;
+  }
+
+  .soar_tit {
+    flex-direction: column;
+    display: flex;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .soar_tit_top {
+    flex-direction: row;
+    display: flex;
+  }
+
+  .soar_tit_top img {
+    width: 50px;
+  }
+
+  .soar_tit span {
+    line-height: 3;
+  }
+
+  /* 6个飙升 */
+  .soar_box {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 500px;
+  }
+
+  .soar_list {
+    width: 48%;
+    height: 30%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #ccc;
+    /* border: 1px solid red; */
+  }
+
+
+  .soar_list_box {
+    width: 100%;
+    height: 85%;
+    /* border: 1px solid red; */
+    flex-direction: row;
+    justify-content: space-between;
+    display: flex;
+  }
+
+  .soar_list_img {
+    width: 100px;
+    height: 100%;
+    /* border: 1px solid red; */
+    cursor: pointer;
+  }
+
+  .soar_list_img img {
+    width: 100px;
+  }
+
+  .soar_list_text {
+    width: 60%;
+    height: 100%;
+    justify-content: center;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .soar_list_text_tit {
+    /* font-size: 18px; */
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .soar_list_text_author {
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  .soar_vieWall {
+    cursor: pointer;
+  }
+
+  /* 右边 */
+  .book_box_rgt {
+    width: 49%;
+    flex-direction: column;
+    display: flex;
+  }
+
+  /* 新书 */
+  .newBook {
+    width: 100%;
+    /* height: 100px; */
+    /* border: 1px solid red; */
+    flex-direction: column;
+    display: flex;
+  }
+
+  .newBook_tit {
+    flex-direction: column;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+  }
+
+  .newBook_tit_top {
+    flex-direction: row;
+    display: flex;
+  }
+
+  .newBook_tit img {
+    width: 50px;
+  }
+
+  .newBook_tit span {
+    line-height: 3;
+  }
+
+  /* 开始 */
+  /* 6个新书 */
+  .newBook_box {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 500px;
+  }
+
+  .newBook_list {
+    width: 48%;
+    height: 30%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #ccc;
+    /* border: 1px solid red; */
+  }
+
+  .newBook_list_box {
+    width: 100%;
+    height: 85%;
+    /* border: 1px solid red; */
+    flex-direction: row;
+    justify-content: space-between;
+    display: flex;
+  }
+
+  .newBook_list_img {
+    width: 100px;
+    height: 100%;
+    /* border: 1px solid red; */
+    cursor: pointer;
+  }
+
+  .newBook_list_img img {
+    width: 100px;
+  }
+
+  .newBook_list_text {
+    width: 60%;
+    height: 100%;
+    justify-content: center;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .newBook_list_text_tit {
+    /* font-size: 18px; */
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .newBook_list_text_author {
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  .soar_vieWall {
+    cursor: pointer;
+  }
+</style>
+
+<body>
+  <div id="app" class="max" v-cloak>
+    <!-- search -->
+    <div class="search">
+      <div class="search_top">
+        <img src="./img/dushu.png" alt="">
+        <span class="search_top_span">微信读书</span>
+      </div>
+      <div class="search_btn">
+        <div class="search_img">
+          <img src="./img/search.png" alt="">
+        </div>
+        <div class="search_ipt">
+          <input type="text" placeholder="搜索">
+        </div>
+        <div class="search_enter">
+          <img src="./img/enter.png" alt="">
+        </div>
+      </div>
+    </div>
+    <!-- 书版 -->
+    <div class="book">
+      <div class="book_box">
+        <!-- 左面 -->
+        <div class="book_box_lft">
+          <!-- 飙升 -->
+          <div class="soar">
+            <div class="soar_tit">
+              <div class="soar_tit_top">
+                <img src="./img/dushu.png" alt="">
+                <span>/</span>
+                <span>飙升出版</span>
+              </div>
+              <span>微信读书微信读书微信读书微信读书</span>
+            </div>
+            <!-- 6个飙升 -->
+            <div class="soar_box">
+              <div class="soar_list">1
+                <div class="soar_list_box">
+                  <div class="soar_list_img">
+                    <img src="./img/dushu.png" alt="">
+                  </div>
+                  <div class="soar_list_text">
+                    <div class="soar_list_text_tit">1 秦岭记秦岭记秦岭记秦岭记秦岭记</div>
+                    <div class="soar_list_text_author">贾平凹</div>
+                  </div>
+                </div>
+              </div>
+              <div class="soar_list">2
+                <div class="soar_list_box">
+                  <div class="soar_list_img">
+                    <img src="./img/dushu.png" alt="">
+                  </div>
+                  <div class="soar_list_text">
+                    <div class="soar_list_text_tit">1 秦岭记秦岭记秦岭记秦岭记秦岭记</div>
+                    <div class="soar_list_text_author">贾平凹</div>
+                  </div>
+                </div>
+              </div>
+              <div class="soar_list">3
+                <div class="soar_list_box">
+                  <div class="soar_list_img">
+                    <img src="./img/dushu.png" alt="">
+                  </div>
+                  <div class="soar_list_text">
+                    <div class="soar_list_text_tit">1 秦岭记秦岭记秦岭记秦岭记秦岭记</div>
+                    <div class="soar_list_text_author">贾平凹</div>
+                  </div>
+                </div>
+              </div>
+              <div class="soar_list">4
+                <div class="soar_list_box">
+                  <div class="soar_list_img">
+                    <img src="./img/dushu.png" alt="">
+                  </div>
+                  <div class="soar_list_text">
+                    <div class="soar_list_text_tit">1 秦岭记秦岭记秦岭记秦岭记秦岭记</div>
+                    <div class="soar_list_text_author">贾平凹</div>
+                  </div>
+                </div>
+              </div>
+              <div class="soar_list">5
+                <div class="soar_list_box">
+                  <div class="soar_list_img">
+                    <img src="./img/dushu.png" alt="">
+                  </div>
+                  <div class="soar_list_text">
+                    <div class="soar_list_text_tit">1 秦岭记秦岭记秦岭记秦岭记秦岭记</div>
+                    <div class="soar_list_text_author">贾平凹</div>
+                  </div>
+                </div>
+              </div>
+              <div class="soar_list">6
+                <div class="soar_list_box">
+                  <div class="soar_list_img">
+                    <img src="./img/dushu.png" alt="">
+                  </div>
+                  <div class="soar_list_text">
+                    <div class="soar_list_text_tit">1 秦岭记秦岭记秦岭记秦岭记秦岭记</div>
+                    <div class="soar_list_text_author">贾平凹</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="soar_vieWall">查看全部 ></div>
+          </div>
+        </div>
+        <!-- 右面 -->
+        <div class="book_box_rgt">
+          <!-- 新书 -->
+          <div class="newBook">
+            <div class="newBook_tit">
+              <div class="newBook_tit_top">
+                <img src="./img/dushu.png" alt="">
+                <span>/</span>
+                <span>飙升出版</span>
+              </div>
+              <span>微信读书微信读书微信读书微信读书</span>
+            </div>
+            <!-- 6个新书 -->
+            <div class="newBook_box">
+              <div class="newBook_list">1
+                <div class="newBook_list_box">
+                  <div class="newBook_list_img">
+                    <img src="./img/dushu.png" alt="">
+                  </div>
+                  <div class="newBook_list_text">
+                    <div class="newBook_list_text_tit">1 秦岭记秦岭记秦岭记秦岭记秦岭记</div>
+                    <div class="newBook_list_text_author">贾平凹</div>
+                  </div>
+                </div>
+              </div>
+              <div class="newBook_list">2
+                <div class="newBook_list_box">
+                  <div class="newBook_list_img">
+                    <img src="./img/dushu.png" alt="">
+                  </div>
+                  <div class="newBook_list_text">
+                    <div class="newBook_list_text_tit">1 秦岭记秦岭记秦岭记秦岭记秦岭记</div>
+                    <div class="newBook_list_text_author">贾平凹</div>
+                  </div>
+                </div>
+              </div>
+              <div class="newBook_list">3
+                <div class="newBook_list_box">
+                  <div class="newBook_list_img">
+                    <img src="./img/dushu.png" alt="">
+                  </div>
+                  <div class="newBook_list_text">
+                    <div class="newBook_list_text_tit">1 秦岭记秦岭记秦岭记秦岭记秦岭记</div>
+                    <div class="newBook_list_text_author">贾平凹</div>
+                  </div>
+                </div>
+              </div>
+              <div class="newBook_list">4
+                <div class="newBook_list_box">
+                  <div class="newBook_list_img">
+                    <img src="./img/dushu.png" alt="">
+                  </div>
+                  <div class="newBook_list_text">
+                    <div class="newBook_list_text_tit">1 秦岭记秦岭记秦岭记秦岭记秦岭记</div>
+                    <div class="newBook_list_text_author">贾平凹</div>
+                  </div>
+                </div>
+              </div>
+              <div class="newBook_list">5
+                <div class="newBook_list_box">
+                  <div class="newBook_list_img">
+                    <img src="./img/dushu.png" alt="">
+                  </div>
+                  <div class="newBook_list_text">
+                    <div class="newBook_list_text_tit">1 秦岭记秦岭记秦岭记秦岭记秦岭记</div>
+                    <div class="newBook_list_text_author">贾平凹</div>
+                  </div>
+                </div>
+              </div>
+              <div class="newBook_list">6
+                <div class="newBook_list_box">
+                  <div class="newBook_list_img">
+                    <img src="./img/dushu.png" alt="">
+                  </div>
+                  <div class="newBook_list_text">
+                    <div class="newBook_list_text_tit">1 秦岭记秦岭记秦岭记秦岭记秦岭记</div>
+                    <div class="newBook_list_text_author">贾平凹</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="soar_vieWall">查看全部 ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      return: {
+      }
+    },
+    mounted() { },
+    methods: {
+    },
+  })
+
+</script>
+
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>two</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/minireset.css/0.0.2/minireset.min.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script> <!--  vue.js -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+  <!-- <link rel="stylesheet" href="./css/index.css"> -->
+</head>
+<style>
+  .max {
+    min-width: 100%;
+    min-height: 100%;
+    background: #fff;
+    flex-direction: column;
+    display: flex;
+  }
+
+  /* 顶栏 */
+  .nav {
+    width: 100%;
+    height: 80px;
+    /* border: 1px solid red; */
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .nav_box {
+    width: 1200px;
+    height: 60%;
+    /* border: 1px solid pink; */
+    justify-content: space-between;
+    flex-direction: row;
+    display: flex;
+  }
+
+  .nav_box_lft {
+    width: 10%;
+    /* border: 1px solid #000; */
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .nav_box_lft img {
+    width: 25px;
+    cursor: pointer;
+  }
+
+  .nav_box_lft span {
+    margin-left: 10px;
+    font-weight: 800;
+  }
+
+  .nav_box_ctr {
+    width: 35%;
+    /* border: 1px solid #ccc; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 25px;
+    background-color: rgb(246, 247, 249);
+  }
+
+  .nav_box_ctr_img {
+    width: 11%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav_box_ctr_img img {
+    width: 25px;
+    cursor: pointer;
+  }
+
+  .nav_box_ctr_input {
+    width: 89%;
+    /* border: 1px solid red; */
+  }
+
+  .nav_box_ctr_input input {
+    width: 100%;
+    height: 100%;
+    background: none;
+    outline: none;
+    border: 0px;
+  }
+
+  .nav_box_rgt {
+    width: 40%;
+    /* border: 1px solid #000; */
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    /* justify-content: space-between; */
+  }
+
+  .nav_box_rgt a {
+    padding: 0px 12px 0px 12px;
+    border-right: 1px solid #ccc;
+  }
+
+  /* .nav_box_rgt_bdr {
+    border: none;
+  } */
+
+  /* 内容盒子 */
+  .box {
+    width: 1200px;
+    margin: 0 auto;
+    flex-direction: row;
+    display: flex;
+  }
+
+  /* 左边导航 */
+  .navigation {
+    width: 18%;
+    /* height: 200px;
+    border: 1px solid red; */
+    flex-direction: column;
+    display: flex;
+    border-right: 1px solid #ccc;
+  }
+
+  /* 上 */
+  .navigation_top {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+  }
+
+  .navigation_top_list {
+    width: 100%;
+    height: 80px;
+    /* border: 1px solid red; */
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .navigation_top_list_box {
+    flex-direction: row;
+    display: flex;
+  }
+
+  .navigation_top_list_box_img img {
+    width: 65px;
+  }
+
+  /* 下 */
+  .navigation_btn {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+  }
+
+  .navigation_btn_list {
+    width: 100%;
+    height: 60px;
+    border-radius: 5px 0 0 5px;
+    /* border: 1px solid red; */
+  }
+
+  .navigation_btn_list_active {
+    width: 100%;
+    height: 60px;
+    border-radius: 5px 0 0 5px;
+    background-color: rgb(36, 147, 238);
+  }
+
+  .navigation_btn_list span {
+    font-weight: 800;
+    font-size: 20px;
+    top: 16px;
+    position: relative;
+    left: 20px;
+  }
+
+  /* 右边小说 */
+  .novel {
+    width: 80%;
+    /* height: 200px;
+    border: 1px solid red; */
+    flex-direction: column;
+    display: flex;
+  }
+
+  /* 上面分类 */
+  .novel_top {
+    width: 100%;
+    height: 300px;
+    border-bottom: 1px solid #ccc;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .novel_top_box {
+    width: 80%;
+    height: 80%;
+    /* border: 1px solid red; */
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .novel_top_box_tit {
+    height: 10%;
+    font-size: 25px;
+    font-weight: 800;
+  }
+
+  .novel_top_box_btn {
+    margin-top: 30px;
+    height: 70%;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    color: #000;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .novel_top_box_btn_list {
+    justify-content: space-between;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 下面选项书籍 */
+  .novel_btn {
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+  }
+
+  .novel_btn_box {
+    width: 95%;
+    /* height: 150px; */
+    /* border: 1px solid red; */
+    flex-direction: column;
+    margin-left: 50px;
+    display: flex;
+  }
+
+  .novel_btn_list {
+    width: 100%;
+    height: 260px;
+    /* border: 1px solid #000; */
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+  }
+
+  .novel_btn_list_box {
+    width: 100%;
+    height: 80%;
+    /* border: 1px solid pink; */
+    flex-direction: row;
+    justify-content: space-between;
+    display: flex;
+  }
+
+  .novel_btn_list_box_lft {
+    width: 5%;
+    height: 100%;
+    /* border: 1px solid pink; */
+    line-height: 12;
+  }
+
+  .novel_btn_list_box_ctr img {
+    width: 120px;
+    height: 100%;
+    /* border: 1px solid pink; */
+  }
+
+  .novel_btn_list_box_rgt {
+    width: 75%;
+    height: 100%;
+    /* border: 1px solid pink; */
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+  }
+
+  .novel_btn_list_box_rgt1 {
+    font-weight: 700;
+    font-size: 23px;
+  }
+
+  .novel_btn_list_box_rgt2 {
+    margin-top: 10px;
+  }
+
+  .novel_btn_list_box_rgt2 img {
+    width: 25px;
+  }
+</style>
+
+<body>
+  <div id="app" class="max" v-cloak>
+    <!-- 顶栏 -->
+    <div class="nav">
+      <div class="nav_box">
+        <div class="nav_box_lft">
+          <img src="./img/dushu.png" alt="">
+          <span>微信读书</span>
+        </div>
+        <div class="nav_box_ctr">
+          <div class="nav_box_ctr_img"><img src="./img/search.png" alt=""></div>
+          <div class="nav_box_ctr_input">
+            <input type="text" placeholder="搜索">
+          </div>
+        </div>
+        <div class="nav_box_rgt">
+          <a>
+            <span>首页</span>
+          </a>
+          <a>
+            <span>传输到手机</span>
+          </a>
+          <a>
+            <span>墨水屏幕</span>
+          </a>
+          <a>
+            <span>手机版</span>
+          </a>
+          <a>
+            <span>微信听书</span>
+          </a>
+          <a class="nav_box_rgt_bdr" style="border-right: none;">
+            <span>登陆</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- 内容盒子 -->
+    <div class="box">
+      <!-- 左边导航 -->
+      <div class="navigation">
+        <!-- 上 -->
+        <div class="navigation_top">
+          <div class="navigation_top_list">
+            <div class="navigation_top_list_box">
+              <div class="navigation_top_list_box_img"><img src="./img/too.png" alt=""></div>
+              <div style="margin-left:10px">/</div>
+              <div style="margin-left:10px">飙升</div>
+            </div>
+          </div>
+          <div class="navigation_top_list">
+            <div class="navigation_top_list_box">
+              <div class="navigation_top_list_box_img"><img src="./img/too.png" alt=""></div>
+              <div style="margin-left:10px">/</div>
+              <div style="margin-left:10px">飙升</div>
+            </div>
+          </div>
+          <div class="navigation_top_list">
+            <div class="navigation_top_list_box">
+              <div class="navigation_top_list_box_img"><img src="./img/too.png" alt=""></div>
+              <div style="margin-left:10px">/</div>
+              <div style="margin-left:10px">飙升</div>
+            </div>
+          </div>
+          <div class="navigation_top_list">
+            <div class="navigation_top_list_box">
+              <div class="navigation_top_list_box_img"><img src="./img/too.png" alt=""></div>
+              <div style="margin-left:10px">/</div>
+              <div style="margin-left:10px">飙升</div>
+            </div>
+          </div>
+        </div>
+        <!-- 下 -->
+        <div class="navigation_btn">
+          <!-- <div class="navigation_btn_list" :class="{navigation_btn_list_active:index == 1}" @click="get(1)"> -->
+          <div class="navigation_btn_list" style="background-color: #ccc;">
+            <span>男生小说榜</span>
+          </div>
+          <div class="navigation_btn_list" :class="{navigation_btn_list_active:index == 1}" @click="get(1)">
+            <span>女生小说榜</span>
+          </div>
+          <div class="navigation_btn_list" :class="{navigation_btn_list_active:index == 2}" @click="get(2)">
+            <span>精品小说</span>
+          </div>
+          <div class="navigation_btn_list" :class="{navigation_btn_list_active:index == 3}" @click="get(3)">
+            <span>历史</span>
+          </div>
+          <div class="navigation_btn_list" :class="{navigation_btn_list_active:index == 4}" @click="get(4)">
+            <span>文学</span>
+          </div>
+          <div class="navigation_btn_list" :class="{navigation_btn_list_active:index == 5}" @click="get(5)">
+            <span>艺术</span>
+          </div>
+          <div class="navigation_btn_list" :class="{navigation_btn_list_active:index == 6}" @click="get(6)">
+            <span>人去传记</span>
+          </div>
+          <div class="navigation_btn_list" :class="{navigation_btn_list_active:index == 7}" @click="get(7)">
+            <span>哲学宗教</span>
+          </div>
+          <div class="navigation_btn_list" :class="{navigation_btn_list_active:index == 8}" @click="get(8)">
+            <span>计算机</span>
+          </div>
+          <div class="navigation_btn_list" :class="{navigation_btn_list_active:index == 9}" @click="get(9)">
+            <span>心理</span>
+          </div>
+          <div class="navigation_btn_list" :class="{navigation_btn_list_active:index == 10}" @click="get(10)">
+            <span>社会文化</span>
+          </div>
+        </div>
+      </div>
+      <!-- 右边小说 -->
+      <div class="novel" v-if="index==2">
+        <!-- 上面分类 -->
+        <div class="novel_top">
+          <div class="novel_top_box">
+            <div class="novel_top_box_tit">精品小说</div>
+            <div class="novel_top_box_btn">
+              <div class="novel_top_box_btn_list">
+                <div style="color: blue;">全部</div>
+                <div>战争军旅</div>
+                <div>战争军旅</div>
+              </div>
+              <div class="novel_top_box_btn_list">
+                <div>社会小说</div>
+                <div>社会小说</div>
+                <div>社会小说</div>
+              </div>
+              <div class="novel_top_box_btn_list">
+                <div>情感小说</div>
+                <div>情感小说</div>
+                <div>情感小说</div>
+              </div>
+              <!-- <div class="novel_top_box_btn_list"> -->
+              <div>
+                <div>青春文学</div>
+                <div style="margin-top: 45px;">青春文学</div>
+                <!-- <div>1</div> -->
+              </div>
+              <!-- <div class="novel_top_box_btn_list"> -->
+              <div>
+                <div>科学经典</div>
+                <div style="margin-top: 45px;">科学经典</div>
+                <!-- <div>1</div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 下面选项书籍 -->
+        <div class="novel_btn">
+          <div class="novel_btn_box">
+            <div class="novel_btn_list">
+              <div class="novel_btn_list_box">
+                <div class="novel_btn_list_box_lft">1</div>
+                <div class="novel_btn_list_box_ctr"><img src="./img/santi.png" alt=""></div>
+                <div class="novel_btn_list_box_rgt">
+                  <div class="novel_btn_list_box_rgt1">三体(全集)</div>
+                  <div class="novel_btn_list_box_rgt2">刘慈欣</div>
+                  <div class="novel_btn_list_box_rgt2">2万人今日阅读 | 推荐值93% <img src="./img/dushu.png" alt=""></div>
+                  <div class="novel_btn_list_box_rgt2">每个人书架上都该有<三体>！关于宇宙狂野
+                      关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="novel_btn_list">
+              <div class="novel_btn_list_box">
+                <div class="novel_btn_list_box_lft">2</div>
+                <div class="novel_btn_list_box_ctr"><img src="./img/santi.png" alt=""></div>
+                <div class="novel_btn_list_box_rgt">
+                  <div class="novel_btn_list_box_rgt1">三体(全集)</div>
+                  <div class="novel_btn_list_box_rgt2">刘慈欣</div>
+                  <div class="novel_btn_list_box_rgt2">2万人今日阅读 | 推荐值93% <img src="./img/dushu.png" alt=""></div>
+                  <div class="novel_btn_list_box_rgt2">每个人书架上都该有<三体>！关于宇宙狂野
+                      关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="novel_btn_list">
+              <div class="novel_btn_list_box">
+                <div class="novel_btn_list_box_lft">3</div>
+                <div class="novel_btn_list_box_ctr"><img src="./img/santi.png" alt=""></div>
+                <div class="novel_btn_list_box_rgt">
+                  <div class="novel_btn_list_box_rgt1">三体(全集)</div>
+                  <div class="novel_btn_list_box_rgt2">刘慈欣</div>
+                  <div class="novel_btn_list_box_rgt2">2万人今日阅读 | 推荐值93% <img src="./img/dushu.png" alt=""></div>
+                  <div class="novel_btn_list_box_rgt2">每个人书架上都该有<三体>！关于宇宙狂野
+                      关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂野关于宇宙狂
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      index: 2
+    },
+    mounted() {
+    },
+    methods: {
+      get(i) {
+        this.index = i;
+      }
+    },
+  })
+
+</script>
+
+</html>
